@@ -22,7 +22,5 @@ uploaded_file = st.file_uploader(
 if uploaded_file:
     st.success(f"Document uploaded: {uploaded_file.name}")
 
-    st.info(
-        "Your document is ready for AI analysis. "
-        "The AI analysis connection will be added next."
-    )
+    if st.button("🔍 Analyze Document", type="primary"):
+        st.info("AI analysis started...")
