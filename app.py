@@ -25,7 +25,6 @@ if uploaded_file:
 
     if st.button("🔍 Analyze Document", type="primary"):
     with st.spinner("Sending document for AI analysis..."):
-
         files = {
             "Government_Document": (
                 uploaded_file.name,
