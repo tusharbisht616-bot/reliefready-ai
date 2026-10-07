@@ -25,7 +25,8 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
     st.success(f"Document uploaded: {uploaded_file.name}")
-
+    person_type = st.text_input("Person Type", placeholder="e.g., Senior Citizen")
+    location = st.text_input("State / Location", placeholder="e.g., Uttarakhand")
     if st.button("🔍 Analyze Document", type="primary"):
         with st.spinner("Sending document for AI analysis..."):
 
@@ -40,8 +41,8 @@ if uploaded_file:
             data = {
                 "Case ID": "WEB-" + uploaded_file.name,
                 "Document Name": uploaded_file.name,
-                "Person Type": "Not specified",
-                "Location": "Not specified",
+                "Person Type": person_type,
+"Location": location,
                 "Document Type": "Government Notice"
             }
 
