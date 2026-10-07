@@ -65,10 +65,18 @@ if uploaded_file:
             )
 
             if response.ok:
-                st.success("✅ Document submitted successfully!")
-                st.info(
-                    "ReliefReady AI is now analyzing your document."
-                )
+    st.success("✅ Document submitted successfully!")
+
+    st.markdown("### 🤖 ReliefReady AI is analyzing your document")
+    st.write(
+        "Your government notice has been received and is being processed "
+        "for eligibility, required documents, deadlines, department, "
+        "and next steps."
+    )
+
+    st.info(
+        "⏳ Analysis in progress — please check back shortly for your action plan."
+    )
             else:
                 st.error(
                     f"❌ Unable to submit document. "
