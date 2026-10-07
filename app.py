@@ -29,8 +29,8 @@ if uploaded_file:
     location = st.text_input("State / Location", placeholder="e.g., Uttarakhand")
     
     age = st.number_input("Age", min_value=0, max_value=120, value=0)
-annual_income = st.number_input("Annual Family Income (₹)", min_value=0, value=0)
-similar_assistance = st.selectbox(
+    annual_income = st.number_input("Annual Family Income (₹)", min_value=0, value=0)
+    similar_assistance = st.selectbox(
     "Receiving Similar Government Pension / Assistance?",
     ["Not specified", "Yes", "No"]
 )
