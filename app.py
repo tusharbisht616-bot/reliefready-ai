@@ -28,6 +28,13 @@ if uploaded_file:
     person_type = st.text_input("Person Type", placeholder="e.g., Senior Citizen")
     location = st.text_input("State / Location", placeholder="e.g., Uttarakhand")
     
+    age = st.number_input("Age", min_value=0, max_value=120, value=0)
+annual_income = st.number_input("Annual Family Income (₹)", min_value=0, value=0)
+similar_assistance = st.selectbox(
+    "Receiving Similar Government Pension / Assistance?",
+    ["Not specified", "Yes", "No"]
+)
+    
     if st.button("🔍 Analyze Document", type="primary"):
         with st.spinner("Sending document for AI analysis..."):
 
@@ -42,9 +49,12 @@ if uploaded_file:
             data = {
                 "Case ID": "WEB-" + uploaded_file.name,
                 "Document Name": uploaded_file.name,
-                "Person Type": person_type,
+               "Person Type": person_type,
 "Location": location,
-                "Document Type": "Government Notice"
+"Age": str(age),
+"Annual Family Income": str(annual_income),
+"Similar Government Assistance": similar_assistance,
+"Document Type": "Government Notice"
             }
 
             response = requests.post(
