@@ -9,6 +9,7 @@ st.set_page_config(
 
 # n8n Production Form URL
 N8N_FORM_URL = "https://hackathonproject09.app.n8n.cloud/form/9b144957-b00a-4d34-a214-a3d0626f3911"
+N8N_RESULT_URL = "https://hackathonproject09.app.n8n.cloud/webhook/reliefready-result"
 
 st.title("🏛️ ReliefReady AI")
 st.caption("AI-powered government document understanding and action planning")
