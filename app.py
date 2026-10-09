@@ -107,7 +107,7 @@ if st.button("🔍 Analyze Document", type="primary"):
                         "deadlines, department, and next steps."
                     )
 
-                    st.info(
+                    
 
                     case_id = data["Case ID"]
 
