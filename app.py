@@ -108,40 +108,32 @@ if st.button("🔍 Analyze Document", type="primary"):
                     )
 
                     st.info(
-                        case_id = data["Case ID"]
 
-try:
-    result_response = requests.get(
-        N8N_RESULT_URL,
-        params={"case_id": case_id},
-        timeout=30
-    )
+                    case_id = data["Case ID"]
 
-    if result_response.ok:
-        result = result_response.json()
+                    try:
+                        result_response = requests.get(
+                            N8N_RESULT_URL,
+                            params={"case_id": case_id},
+                            timeout=30
+                        )
 
-        st.markdown("## 📋 Your Action Plan")
+                        if result_response.ok:
+                            result = result_response.json()
+                            st.markdown("## 📋 Your Action Plan")
+                            st.write("**Eligibility:**", result.get("Eligibility", "Not available"))
+                            st.write("**Required Documents:**", result.get("Required Documents", "Not available"))
+                            st.write("**Next Action:**", result.get("Required Action", "Not available"))
+                            st.write("**Department:**", result.get("Department / Office", "Not available"))
+                            st.write("**Deadline:**", result.get("Deadline", "Not stated"))
+                            st.write("**AI Confidence:**", result.get("AI Confidence", "Not available"))
+                            st.write("**Human Review Required:**", result.get("Review Required", "Not available"))
+                        else:
+                            st.info("Document submitted successfully. The action plan is not available yet. Please try again shortly.")
 
-        st.write("**Eligibility:**", result.get("Eligibility", "Not available"))
-        st.write("**Required Documents:**", result.get("Required Documents", "Not available"))
-        st.write("**Next Action:**", result.get("Required Action", "Not available"))
-        st.write("**Department:**", result.get("Department / Office", "Not available"))
-        st.write("**Deadline:**", result.get("Deadline", "Not stated"))
-        st.write("**AI Confidence:**", result.get("AI Confidence", "Not available"))
-        st.write("**Human Review Required:**", result.get("Review Required", "Not available"))
-
-    else:
-        st.info(
-            "Your document was submitted successfully. "
-            "The action plan is not available yet. Please try again shortly."
-        )
-
-except (requests.exceptions.RequestException, ValueError):
-    st.info(
-        "Your document was submitted successfully, but we couldn't retrieve "
-        "the action plan right now. Please try again shortly."
-    )
-                    )
+                    except (requests.exceptions.RequestException, ValueError):
+                        st.info("Document submitted successfully, but we couldn't retrieve the action plan right now. Please try again shortly.")
+                    
 
                 else:
 
