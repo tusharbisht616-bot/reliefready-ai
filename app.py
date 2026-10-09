@@ -109,7 +109,7 @@ if st.button("🔍 Analyze Document", type="primary"):
 
                     
 
-                    case_id = data["Case ID"]
+                    case_id = str(data["Case ID"]).strip()
 
                     try:
                         result_response = requests.get(
